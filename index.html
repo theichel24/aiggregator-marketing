@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIggregator — Your data. Your view.</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0a0f1e;
+    --muted: #64748b;
+    --accent: #6366f1;
+    --accent2: #10b981;
+    --border: rgba(99,102,241,0.18);
+    --bg: #f8f9ff;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 24px;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(99,102,241,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 90%, rgba(16,185,129,0.05) 0%, transparent 55%);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(99,102,241,0.08);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    box-shadow: 0 0 6px rgba(16,185,129,0.6);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(42px, 8vw, 72px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, var(--ink) 0%, #3730a3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo span {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 48px;
+    letter-spacing: 0.01em;
+  }
+
+  .description {
+    max-width: 520px;
+    text-align: center;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 52px;
+  }
+
+  .description strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .form-wrap {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 16px;
+  }
+
+  input[type="email"] {
+    flex: 1;
+    padding: 13px 18px;
+    border: 1px solid rgba(99,102,241,0.25);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    background: white;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  input[type="email"]:focus {
+    border-color: var(--accent);
+  }
+
+  input[type="email"]::placeholder { color: #94a3b8; }
+
+  button {
+    padding: 13px 22px;
+    background: linear-gradient(135deg, var(--accent), #818cf8);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.15s, transform 0.1s;
+  }
+
+  button:hover { opacity: 0.9; transform: translateY(-1px); }
+  button:active { transform: translateY(0); }
+
+  .fine-print {
+    font-size: 11px;
+    color: #94a3b8;
+    letter-spacing: 0.03em;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 52px;
+    max-width: 480px;
+  }
+
+  .chip {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .footer {
+    margin-top: 64px;
+    font-size: 12px;
+    color: #c4c9d4;
+    letter-spacing: 0.04em;
+  }
+
+  .success {
+    display: none;
+    font-size: 14px;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="badge">
+    <span class="dot"></span>
+    Coming soon
+  </div>
+
+  <div class="logo">AI<span>ggregator</span></div>
+  <div class="tagline">Your data. Your view.</div>
+
+  <p class="description">
+    Ask anything about your data — banking, healthcare, investments — and get
+    <strong>beautiful, interactive dashboards</strong> generated instantly.
+    No reports to configure. No BI tools to learn.
+    <strong>Just describe what you want to see.</strong>
+  </p>
+
+  <p class="success" id="success">You're on the list — we'll be in touch soon.</p>
+
+  <div class="form-wrap">
+    <input type="email" id="email" placeholder="your@email.com" />
+    <button onclick="handleSubmit()">Get early access</button>
+  </div>
+  <div class="fine-print">No spam. Early access only.</div>
+
+  <div class="chips">
+    <span class="chip">🏦 Banking & Investments</span>
+    <span class="chip">🏥 Healthcare</span>
+    <span class="chip">📊 Any data source</span>
+    <span class="chip">⚡ AI-powered</span>
+    <span class="chip">🔌 Embeddable</span>
+  </div>
+
+  <div class="footer">© 2026 AIggregator · aiggregator.ai</div>
+
+<script>
+  function handleSubmit() {
+    const email = document.getElementById('email').value;
+    if (!email || !email.includes('@')) {
+      document.getElementById('email').focus();
+      return;
+    }
+    document.querySelector('.form-wrap').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    // Replace this with your actual form handler (Mailchimp, Resend, Formspree, etc.)
+    console.log('Early access signup:', email);
+  }
+
+  document.getElementById('email').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleSubmit();
+  });
+</script>
+</body>
+</html>
