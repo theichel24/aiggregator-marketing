@@ -229,16 +229,38 @@
   <div class="footer">© 2026 AIggregator · aiggregator.ai</div>
 
 <script>
-  function handleSubmit() {
-    const email = document.getElementById('email').value;
+  async function handleSubmit() {
+    const email = document.getElementById('email').value.trim();
+    const btn = document.querySelector('button');
+
     if (!email || !email.includes('@')) {
       document.getElementById('email').focus();
       return;
     }
-    document.querySelector('.form-wrap').style.display = 'none';
-    document.getElementById('success').style.display = 'block';
-    // Replace this with your actual form handler (Mailchimp, Resend, Formspree, etc.)
-    console.log('Early access signup:', email);
+
+    // Loading state
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/xyklvpja', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      if (res.ok) {
+        document.querySelector('.form-wrap').style.display = 'none';
+        document.querySelector('.fine-print').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+    }
   }
 
   document.getElementById('email').addEventListener('keydown', function(e) {
@@ -247,3 +269,4 @@
 </script>
 </body>
 </html>
+
